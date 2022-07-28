@@ -47,6 +47,9 @@ const sketch = () => {
 
         if (Math.random() > 0.5) {
           context.beginPath();
+          context.lineWidth = randomStrokeWidth(0.0078);
+          context.strokeStyle = "rgb(151, 0, 156)";
+          rotate(hc, vc);
           context.rect(
             x + smallSquaresPositionDiference,
             y + smallSquaresPositionDiference,
@@ -54,7 +57,20 @@ const sketch = () => {
             squareHeight - smallSquaresSizeDiference
           );
           context.stroke();
+        } else {
+          context.beginPath();
+            context.lineWidth = randomStrokeWidth(0.0078);
+            context.strokeStyle = "white";
+            rotate(hc, vc);
+            context.rect(
+              x + smallSquaresPositionDiference,
+              y + smallSquaresPositionDiference,
+              squareWidth - smallSquaresSizeDiference,
+              squareHeight - smallSquaresSizeDiference
+            );
+            context.stroke();
         }
+        context.setTransform(1, 0, 0, 1, 0, 0);
       }
     }
   };
