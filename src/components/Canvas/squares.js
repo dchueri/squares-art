@@ -11,9 +11,9 @@ const sketch = () => {
 
     const squareWidth = width * 0.1;
     const squareHeight = height * 0.1;
-    const gap = width * 0.03;
+    const gap = width * 0.05;
     const squaresPerLine = 5;
-    const smallSquaresSizeDiference = width * 0.02;
+    const smallSquaresSizeDiference = width * 0.05;
     const smallSquaresPositionDiference = smallSquaresSizeDiference / 2;
     const initialPositionX = width * 0.17;
     const initialPositionY = height * 0.17;
