@@ -1,8 +1,8 @@
 import React from "react";
-import squares from './squares';
+import circles from "./circles";
 
 const Canvas = () => {
-  return <canvas>{squares}</canvas>;
+  return <canvas>{circles}</canvas>;
 };
 
 export default Canvas;
