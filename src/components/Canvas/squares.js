@@ -40,6 +40,7 @@ const sketch = () => {
         const vc = y + squareHeight / 2;
 
         context.beginPath();
+        context.strokeStyle = "white";
         context.lineWidth = randomStrokeWidth(0.01);
         rotate(hc,vc);
         context.rect(x, y, squareWidth, squareHeight);
@@ -57,18 +58,6 @@ const sketch = () => {
             squareHeight - smallSquaresSizeDiference
           );
           context.stroke();
-        } else {
-          context.beginPath();
-            context.lineWidth = randomStrokeWidth(0.0078);
-            context.strokeStyle = "white";
-            rotate(hc, vc);
-            context.rect(
-              x + smallSquaresPositionDiference,
-              y + smallSquaresPositionDiference,
-              squareWidth - smallSquaresSizeDiference,
-              squareHeight - smallSquaresSizeDiference
-            );
-            context.stroke();
         }
         context.setTransform(1, 0, 0, 1, 0, 0);
       }
