@@ -1,14 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import { squares } from "./squares";
+import React, { useRef } from "react";
+import square from './square';
 
-const Canvas = (props) => {
+const Canvas = () => {
   const canvasRef = useRef(null);
-
-  useEffect(() => {
-    squares()
-  }, []);
-
-  return <canvas ref={canvasRef} {...props} width='600' height='600' />;
+  return <canvas ref={square} />;
 };
 
 export default Canvas;
