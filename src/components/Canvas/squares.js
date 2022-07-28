@@ -1,37 +1,63 @@
-export const squares = () => {
-  let canvas = document.querySelector("canvas");
-  let context = canvas.getContext("2d");
-  const squareWidth = 60;
-  const squareHeight = 60;
-  const gap = 20;
-  const squaresPerLine = 5;
-  const smallSquaresSizeDiference = 16;
-  const smallSquaresPositionDiference = 8;
-  let x, y;
+const canvasSketch = require("canvas-sketch");
 
-  context.fillStyle = "blue";
+const settings = {
+  dimensions: [1080, 1080],
+};
 
-  context.lineWidth = 4;
+const sketch = () => {
+  return ({ context, width, height }) => {
+    context.fillStyle = "black";
+    context.fillRect(0, 0, width, height);
 
-  for (let i = 0; i < squaresPerLine; i++) {
-    for (let j = 0; j < squaresPerLine; j++) {
-      x = 100 + (squareWidth + gap) * i;
-      y = 100 + (squareHeight + gap) * j;
+    const squareWidth = width * 0.1;
+    const squareHeight = height * 0.1;
+    const gap = width * 0.03;
+    const squaresPerLine = 5;
+    const smallSquaresSizeDiference = width * 0.02;
+    const smallSquaresPositionDiference = smallSquaresSizeDiference / 2;
+    const initialPositionX = width * 0.17;
+    const initialPositionY = height * 0.17;
+    const strokeColor = 'white';
+    let x, y;
 
-      context.beginPath();
-      context.rect(x, y, squareWidth, squareHeight);
-      context.stroke();
+    context.strokeStyle = strokeColor
+    context.lineWidth = width * 0.015;
 
-      if (Math.random() > 0.5) {
+    const rotate = (hc, vc) => {
+      if (Math.random() > 0.2) return;
+      context.translate(hc, vc);
+      context.rotate((45 * Math.PI) / 180);
+      context.translate(-hc, -vc);
+    };
+
+    const randomStrokeWidth = (weight) => width * Math.random() * weight;
+
+    for (let i = 0; i < squaresPerLine; i++) {
+      for (let j = 0; j < squaresPerLine; j++) {
+        x = initialPositionX + (squareWidth + gap) * i;
+        y = initialPositionY + (squareHeight + gap) * j;
+        const hc = x + squareWidth /2;
+        const vc = y + squareHeight / 2;
+
         context.beginPath();
-        context.rect(
-          x + smallSquaresPositionDiference,
-          y + smallSquaresPositionDiference,
-          squareWidth - smallSquaresSizeDiference,
-          squareHeight - smallSquaresSizeDiference
-        );
+        context.lineWidth = randomStrokeWidth(0.01);
+        rotate(hc,vc);
+        context.rect(x, y, squareWidth, squareHeight);
         context.stroke();
+
+        if (Math.random() > 0.5) {
+          context.beginPath();
+          context.rect(
+            x + smallSquaresPositionDiference,
+            y + smallSquaresPositionDiference,
+            squareWidth - smallSquaresSizeDiference,
+            squareHeight - smallSquaresSizeDiference
+          );
+          context.stroke();
+        }
       }
     }
-  }
+  };
 };
+
+canvasSketch(sketch, settings);

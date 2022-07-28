@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
-import square from './square';
+import React from "react";
+import squares from './squares';
 
 const Canvas = () => {
-  const canvasRef = useRef(null);
-  return <canvas ref={square} />;
+  return <canvas>{squares}</canvas>;
 };
 
 export default Canvas;
