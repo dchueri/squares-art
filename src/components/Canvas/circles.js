@@ -8,16 +8,16 @@ const settings = {
 
 const sketch = () => {
   return ({ context, width, height }) => {
-    context.fillStyle = "white";
+    context.fillStyle = "#120929";
     context.fillRect(0, 0, width, height);
 
     const xCenter = width * 0.5;
     const yCenter = height * 0.5;
     const w = width * 0.01;
-    const h = height * 0.1;
+    const h = height * 0.7;
     let x, y;
 
-    const numberOfItems = 12;
+    const numberOfItems = 20;
     const radius = width * 0.3;
 
     for (let i = 0; i < numberOfItems; i++) {
@@ -32,7 +32,7 @@ const sketch = () => {
       context.rotate(-angle);
       context.scale(random.range(0.1, 2), random.range(0.2, 0.5));
 
-      context.fillStyle = "black";
+      context.fillStyle = "#BF0656";
       context.beginPath();
       context.rect(-w * 0.5, random.range(0, -h * 0.5), w, h);
       context.fill();
@@ -45,7 +45,7 @@ const sketch = () => {
       context.lineWidth = random.range(5, 20);
 
       context.beginPath();
-      context.arc(0, 0, radius * random.range(0.7, 1.3), slice * random.range(0, 0.5), slice * random.range(0, 0.5));
+      context.arc(0, 0, radius * random.range(0.7, 1.3), slice * random.range(1, -5), slice * random.range(1, 4));
       context.stroke();
 
       context.restore();
