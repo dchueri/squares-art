@@ -8,13 +8,13 @@ const settings = {
 
 const sketch = () => {
   return ({ context, width, height }) => {
-    context.fillStyle = "#120929";
+    context.fillStyle = "#090514";
     context.fillRect(0, 0, width, height);
 
-    const xCenter = width * 0.5;
-    const yCenter = height * 0.5;
+    const xCenter = 0;
+    const yCenter = 0;
     const w = width * 0.01;
-    const h = height * 0.7;
+    const h = height * 10.0;
     let x, y;
 
     const numberOfItems = 20;
@@ -46,8 +46,8 @@ const sketch = () => {
 
       context.beginPath();
       context.arc(0, 0, radius * random.range(0.7, 1.3), slice * random.range(1, -5), slice * random.range(1, 4));
+      context.strokeStyle = "#BF0656";
       context.stroke();
-
       context.restore();
     }
   };
